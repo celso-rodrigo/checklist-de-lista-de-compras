@@ -1,11 +1,7 @@
-interface IProps {
-  icon: string;
-  category: string;
-  style: 'tag' | 'select';
-}
+import ITag from "../interfaces/ITag";
 
-function Tag({icon, category, style}: IProps) {
-  const containerStyle = style === 'tag' 
+function Tag({icon, category, style}: ITag) {
+  const containerStyle = style === 'tag'
     ? "" 
     : "";
 
