@@ -1,6 +1,8 @@
 import menuIcon from "../assets/menuIcon.svg";
 import ITag from "../interfaces/ITag";
+import EditMenu from "./EditMenu";
 import Tag from "./Tag";
+import { useState } from "react";
 
 interface IProps {
   itemBought: boolean;
@@ -11,6 +13,12 @@ interface IProps {
 }
 
 function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IProps) {
+  const [editing, setEditing] = useState(false);
+
+  function toggleEditing() {
+    setEditing((prev) => !prev);
+  }
+
   return (
     <div>
       <input
@@ -27,9 +35,11 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IPro
       />
       <button
         type="button"
+        onClick={toggleEditing}
       >
         <img src={menuIcon} alt="Edit menu button" />
       </button>
+      {editing && (<EditMenu />)}
     </div>
   )
 }
