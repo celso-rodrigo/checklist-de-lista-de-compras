@@ -1,6 +1,8 @@
 import ITag from "../interfaces/ITag";
 
 function Tag({icon, category, style}: ITag) {
+  // 'style' can be either 'tag' when used inside an 'Item' component,
+  // or 'select' when used inside a 'select' element.
   const containerStyle = style === 'tag'
     ? "" 
     : "";
