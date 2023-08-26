@@ -1,5 +1,5 @@
+import { ReactSVG } from "react-svg";
 import menuIcon from "../assets/menuIcon.svg";
-import ITag from "../interfaces/ITag";
 import EditMenu from "./EditMenu";
 import Tag from "./Tag";
 import { useState } from "react";
@@ -9,10 +9,10 @@ interface IProps {
   itemName: string;
   itemQuantity: number;
   itemQuantityUnity: string;
-  tag: ITag;
+  category: string;
 }
 
-function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IProps) {
+function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}: IProps) {
   const [editing, setEditing] = useState(false);
 
   function toggleEditing() {
@@ -20,7 +20,9 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IPro
   }
 
   return (
-    <div>
+    <div
+      className="flex"
+    >
       <input
         type="checkbox"
         checked={itemBought}
@@ -29,15 +31,13 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IPro
       <p>{itemName}</p>
       <p>{`${itemQuantity} ${itemQuantityUnity}`}</p>
       <Tag
-        icon={tag.icon}
-        category={tag.category}
-        style="tag"
+        category={category}
       />
       <button
         type="button"
         onClick={toggleEditing}
       >
-        <img src={menuIcon} alt="Edit menu button" />
+        <ReactSVG src={menuIcon} />
       </button>
       {editing && (<EditMenu />)}
     </div>
