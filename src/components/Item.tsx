@@ -3,13 +3,14 @@ import menuIcon from "../assets/menuIcon.svg";
 import EditMenu from "./EditMenu";
 import Tag from "./Tag";
 import { useState } from "react";
+import CategoryEnum from "../enums/CategoryEnum";
 
 interface IProps {
   itemBought: boolean;
   itemName: string;
   itemQuantity: number;
   itemQuantityUnity: string;
-  category: string;
+  category: CategoryEnum;
 }
 
 function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}: IProps) {

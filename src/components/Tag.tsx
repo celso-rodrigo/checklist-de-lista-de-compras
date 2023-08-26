@@ -7,18 +7,10 @@ import { ReactSVG } from 'react-svg'
 import CategoryEnum from "../enums/CategoryEnum"
 
 interface IProps {
-  category: string
+  category: CategoryEnum
 }
 
 function Tag({category}: IProps) {
-  function getTagColor():string {
-    if (category === CategoryEnum.padaria) return 'yellow'
-    if (category === CategoryEnum.legume) return 'green'
-    if (category === CategoryEnum.fruta) return 'orange'
-    if (category === CategoryEnum.bebida) return 'blue'
-    return 'pink'
-  }
-
     function getTagIcon():string {
     if (category === CategoryEnum.padaria) return bakeryIcon
     if (category === CategoryEnum.legume) return vegetableIcon
@@ -27,20 +19,35 @@ function Tag({category}: IProps) {
     return meatIcon
   }
 
-  const tagColor = getTagColor();
   const tagIcon = getTagIcon();
+
+  const tagColors: Record<CategoryEnum, string> = {
+    [CategoryEnum.padaria]: 'text-yellow fill-yellow',
+    [CategoryEnum.legume]: 'text-green fill-green',
+    [CategoryEnum.fruta]: 'text-orange fill-orange',
+    [CategoryEnum.bebida]: 'text-blue fill-blue',
+    [CategoryEnum.carne]: 'text-pink fill-pink',
+  };
+
+  const bgColors: Record<CategoryEnum, string> = {
+    [CategoryEnum.padaria]: 'bg-yellow-dark',
+    [CategoryEnum.legume]: 'bg-green-dark',
+    [CategoryEnum.fruta]: 'bg-orange-dark',
+    [CategoryEnum.bebida]: 'bg-blue-dark',
+    [CategoryEnum.carne]: 'bg-pink-dark',
+  };
 
   return (
     <span
-      className={`flex item-center justify-center p-2 px-4 gap-2
-      bg-orange-dark rounded-full`}
+      className={`${bgColors[category]} flex item-center justify-center p-2 px-4 gap-2
+      rounded-full`}
     >
       <ReactSVG 
         src={tagIcon}
-        className={`fill-${tagColor}`}
+        className={`${tagColors[category]}`}
       />
       <p
-        className={`text-${tagColor}`}
+        className={`${tagColors[category]}`}
       >
         {category}
       </p>
