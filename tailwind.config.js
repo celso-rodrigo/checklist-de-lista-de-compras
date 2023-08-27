@@ -14,7 +14,11 @@ export default {
       'green-dark': '#1C2015',
       'blue-dark': '#1A1D23'
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }

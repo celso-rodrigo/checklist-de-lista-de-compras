@@ -11,6 +11,7 @@ interface IProps {
 }
 
 function Tag({category}: IProps) {
+    // Obtain the correct tag icon based on the category
     function getTagIcon():string {
     if (category === CategoryEnum.padaria) return bakeryIcon
     if (category === CategoryEnum.legume) return vegetableIcon
@@ -21,6 +22,7 @@ function Tag({category}: IProps) {
 
   const tagIcon = getTagIcon();
 
+    // Obtain the correct Tailwind class based on the category
   const tagColors: Record<CategoryEnum, string> = {
     [CategoryEnum.padaria]: 'text-yellow fill-yellow',
     [CategoryEnum.legume]: 'text-green fill-green',
@@ -39,15 +41,15 @@ function Tag({category}: IProps) {
 
   return (
     <span
-      className={`${bgColors[category]} flex item-center justify-center p-2 px-4 gap-2
-      rounded-full`}
+      className={`${bgColors[category]} flex item-center justify-center p-2 gap-2
+      rounded-full font-semibold md:px-4`}
     >
       <ReactSVG 
         src={tagIcon}
         className={`${tagColors[category]}`}
       />
       <p
-        className={`${tagColors[category]}`}
+        className={`${tagColors[category]} hidden md:block`}
       >
         {category}
       </p>
