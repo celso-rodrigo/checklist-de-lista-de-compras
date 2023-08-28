@@ -4,6 +4,7 @@ import EditMenu from "./EditMenu";
 import Tag from "./Tag";
 import { useState } from "react";
 import CategoryEnum from "../enums/CategoryEnum";
+import Checkbox from "./Checkbox";
 
 interface IProps {
   itemBought: boolean;
@@ -22,15 +23,19 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}:
 
   return (
     <div
-      className="flex"
+      className="flex bg-gray-400"
     >
-      <input
-        type="checkbox"
-        checked={itemBought}
-        onChange={() => console.log("WIP")}
-      />
-      <p>{itemName}</p>
-      <p>{`${itemQuantity} ${itemQuantityUnity}`}</p>
+      <Checkbox checked={itemBought} />
+      <p
+        className="text-gray-100"
+      >
+        {itemName}
+      </p>
+      <p
+        className="text-gray-200"
+      >
+        {`${itemQuantity} ${itemQuantityUnity}`}
+      </p>
       <Tag
         category={category}
       />
