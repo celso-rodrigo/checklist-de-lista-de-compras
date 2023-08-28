@@ -1,44 +1,65 @@
+import { ReactSVG } from "react-svg";
 import menuIcon from "../assets/menuIcon.svg";
-import ITag from "../interfaces/ITag";
 import EditMenu from "./EditMenu";
 import Tag from "./Tag";
 import { useState } from "react";
+import CategoryEnum from "../enums/CategoryEnum";
+import Checkbox from "./Checkbox";
 
 interface IProps {
   itemBought: boolean;
   itemName: string;
   itemQuantity: number;
   itemQuantityUnity: string;
-  tag: ITag;
+  category: CategoryEnum;
 }
 
-function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, tag}: IProps) {
+function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}: IProps) {
   const [editing, setEditing] = useState(false);
 
   function toggleEditing() {
     setEditing((prev) => !prev);
   }
 
+  const itemBoughtStyle = itemBought
+  ? 'opacity-60'
+  : 'opacity-100'
+
   return (
-    <div>
-      <input
-        type="checkbox"
-        checked={itemBought}
-        onChange={() => console.log("WIP")}
-      />
-      <p>{itemName}</p>
-      <p>{`${itemQuantity} ${itemQuantityUnity}`}</p>
-      <Tag
-        icon={tag.icon}
-        category={tag.category}
-        style="tag"
-      />
-      <button
-        type="button"
-        onClick={toggleEditing}
-      >
-        <img src={menuIcon} alt="Edit menu button" />
-      </button>
+    <div
+      className={`${itemBoughtStyle} flex bg-gray-400 items-center p-4 justify-between
+      max-w-[720px] rounded-md relative`}
+    >
+      <div className="flex items-center gap-4">
+        <Checkbox checked={itemBought} />
+
+        <div>
+          <p
+            className="text-gray-100 text-sm font-bold"
+          >
+            {itemName}
+          </p>
+          <p
+            className="text-gray-200 text-xs"
+          >
+            {`${itemQuantity} ${itemQuantityUnity}`}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <Tag
+          category={category}
+        />
+
+        <button
+          type="button"
+          onClick={toggleEditing}
+        >
+          <ReactSVG src={menuIcon} className="fill-purple-light" />
+        </button>
+      </div>
+
       {editing && (<EditMenu />)}
     </div>
   )
