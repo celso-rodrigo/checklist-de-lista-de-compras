@@ -11,9 +11,9 @@ function Checkbox({checked}: IProps) {
   : 'border-purple-light hover:bg-purple hover:border-purple-light'
 
   return (
-    <label className="flex items-center relative w-4 h-4">
+    <label className="flex items-center relative w-6 h-6">
       <input
-        className={`${checkboxStyle} appearance-none w-4 h-4 border-2 transition-all rounded-sm`}
+        className={`${checkboxStyle} appearance-none w-6 h-6 border-2 transition-all rounded-sm`}
         type="checkbox"
         checked={checked}
         onChange={() => console.log("WIP")}

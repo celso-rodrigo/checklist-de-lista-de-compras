@@ -23,28 +23,38 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}:
 
   return (
     <div
-      className="flex bg-gray-400"
+      className="flex bg-gray-400 items-center p-4 justify-between max-w-[720px] rounded-md"
     >
-      <Checkbox checked={itemBought} />
-      <p
-        className="text-gray-100"
-      >
-        {itemName}
-      </p>
-      <p
-        className="text-gray-200"
-      >
-        {`${itemQuantity} ${itemQuantityUnity}`}
-      </p>
-      <Tag
-        category={category}
-      />
-      <button
-        type="button"
-        onClick={toggleEditing}
-      >
-        <ReactSVG src={menuIcon} />
-      </button>
+      <div className="flex items-center gap-4">
+        <Checkbox checked={itemBought} />
+
+        <div>
+          <p
+            className="text-gray-100 text-sm font-bold"
+          >
+            {itemName}
+          </p>
+          <p
+            className="text-gray-200 text-xs"
+          >
+            {`${itemQuantity} ${itemQuantityUnity}`}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <Tag
+          category={category}
+        />
+
+        <button
+          type="button"
+          onClick={toggleEditing}
+        >
+          <ReactSVG src={menuIcon} className="fill-purple-light" />
+        </button>
+      </div>
+
       {editing && (<EditMenu />)}
     </div>
   )
