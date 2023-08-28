@@ -21,9 +21,14 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}:
     setEditing((prev) => !prev);
   }
 
+  const itemBoughtStyle = itemBought
+  ? 'opacity-60'
+  : 'opacity-100'
+
   return (
     <div
-      className="flex bg-gray-400 items-center p-4 justify-between max-w-[720px] rounded-md"
+      className={`${itemBoughtStyle} flex bg-gray-400 items-center p-4 justify-between
+      max-w-[720px] rounded-md`}
     >
       <div className="flex items-center gap-4">
         <Checkbox checked={itemBought} />
