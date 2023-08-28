@@ -26,12 +26,15 @@ export default {
       'orange-dark': '#261A17',
       'yellow-dark': '#211E12',
       'green-dark': '#1C2015',
-      'blue-dark': '#1A1D23'
+      'blue-dark': '#1A1D23',
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-      }
+        'inter': ['Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'header': "url('/src/assets/cover.jpg')",
+      },
     },
   },
   plugins: [],
