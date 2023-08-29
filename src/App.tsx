@@ -1,15 +1,19 @@
-import Item from "./components/Item"
-import CategoryEnum from "./enums/CategoryEnum"
+import Header from './components/Header'
+import Item from './components/Item'
+import CategoryEnum from './enums/CategoryEnum'
 
 function App() {
   return (
-    <div className="font-inter">
-      <h1 className='text-3xl font-bold text-center mt-10'>Hello, world! 👋</h1>
+    <div className='font-inter'>
+      <Header />
+      <h1 className='text-gray-100 text-2xl font-bold leading-normal tracking-wide'>
+        Lista de Compras
+      </h1>
       <Item
         itemBought={false}
-        itemName="Banana"
+        itemName='Banana'
         itemQuantity={2}
-        itemQuantityUnity="unidades"
+        itemQuantityUnity='unidades'
         category={CategoryEnum.legume}
       />
     </div>
