@@ -1,8 +1,8 @@
 function EditMenu() {
   return (
     <div
-      className="flex flex-col absolute bg-gray-300 top-1/2 right-0 translate-x-20
-      font-bold rounded-md"
+      className="flex flex-col absolute bg-gray-300 top-1/2 right-0 translate-x-16
+      font-bold rounded-tr-md rounded-bl-md rounded-br-md z-10"
     >
       <button
         className="py-2 px-4 transition-all rounded-tl-md rounded-tr-md text-gray-100

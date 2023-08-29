@@ -28,14 +28,14 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}:
   return (
     <div
       className={`${itemBoughtStyle} flex bg-gray-400 items-center p-4 justify-between
-      max-w-[720px] rounded-md relative`}
+      rounded-md relative w-[348px] md:w-[720px]`}
     >
       <div className="flex items-center gap-4">
         <Checkbox checked={itemBought} />
 
         <div>
           <p
-            className="text-gray-100 text-sm font-bold"
+            className={`text-gray-100 text-sm font-bold ${itemBought ? 'line-through' : ''}`}
           >
             {itemName}
           </p>
