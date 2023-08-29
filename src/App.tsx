@@ -4,7 +4,7 @@ import CategoryEnum from './enums/CategoryEnum'
 
 function App() {
   return (
-    <div className='font-inter'>
+    <div className='font-inter bg-gray-600 min-h-screen'>
       <Header />
       <h1 className='text-gray-100 text-2xl font-bold leading-normal tracking-wide'>
         Lista de Compras
