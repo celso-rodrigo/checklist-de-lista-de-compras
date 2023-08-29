@@ -6,6 +6,9 @@ function App() {
   return (
     <div className='font-inter'>
       <Header />
+      <h1 className='text-gray-100 text-2xl font-bold leading-normal tracking-wide'>
+        Lista de Compras
+      </h1>
       <Item
         itemBought={false}
         itemName='Banana'
