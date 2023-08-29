@@ -1,9 +1,10 @@
+import Form from './components/Form'
 import Item from './components/Item'
 import CategoryEnum from './enums/CategoryEnum'
 
 function App() {
   return (
-    <div 
+    <div
       className='font-inter flex flex-col items-center pt-[88px] gap-6
       min-h-screen bg-gray-600 bg-header bg-no-repeat bg-contain'
     >
@@ -11,9 +12,9 @@ function App() {
         Lista de Compras
       </h1>
 
-      <div
-        className='flex flex-col gap-3'
-      >
+      <Form />
+
+      <div className='flex flex-col gap-3'>
         <Item
           itemBought={false}
           itemName='Banana'

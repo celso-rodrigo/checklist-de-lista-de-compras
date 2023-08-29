@@ -4,7 +4,7 @@ export default {
   theme: {
     colors: {
       'purple-light': '#A881E6',
-      'purple': '#7450AC',
+      purple: '#7450AC',
       'purple-dark': '#523480',
 
       'gray-100': '#FBF9FE',
@@ -15,13 +15,13 @@ export default {
       'gray-600': '#0C0C0D',
 
       'sucess-light': '#4E995E',
-      'sucess': '#2F723D',
+      sucess: '#2F723D',
 
-      'pink': '#DB5BBF',
-      'orange': '#E07B67',
-      'yellow': '#BB9F3A',
-      'green': '#8CAD51',
-      'blue': '#7B94CB',
+      pink: '#DB5BBF',
+      orange: '#E07B67',
+      yellow: '#BB9F3A',
+      green: '#8CAD51',
+      blue: '#7B94CB',
       'pink-dark': '#251622',
       'orange-dark': '#261A17',
       'yellow-dark': '#211E12',
@@ -30,12 +30,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'header': "url('/src/assets/cover.jpg')",
+        header: "url('/src/assets/cover.jpg')",
       },
     },
   },
-  plugins: [],
+  plugins: [import('@tailwindcss/forms')],
 }
