@@ -1,8 +1,43 @@
+import { useState } from 'react'
 import Form from './components/Form'
 import Item from './components/Item'
 import CategoryEnum from './enums/CategoryEnum'
+import MeasureEnum from './enums/MeasureEnum'
+import IItem from './interfaces/IItem'
 
 function App() {
+  const [item, setItem] = useState('')
+  const [quantity, setQuantity] = useState('')
+  const [measure, setMeasure] = useState<MeasureEnum>(MeasureEnum.unidade)
+  const [category, setCategory] = useState<CategoryEnum | undefined>(undefined)
+
+  const itemListMock: IItem[] = [
+    {
+      id: 1,
+      itemBought: false,
+      itemName: 'banana',
+      itemQuantity: 8,
+      itemMeasure: MeasureEnum.unidade,
+      category: CategoryEnum.fruta,
+    },
+    {
+      id: 2,
+      itemBought: false,
+      itemName: 'Coca',
+      itemQuantity: 2,
+      itemMeasure: MeasureEnum.litros,
+      category: CategoryEnum.bebida,
+    },
+    {
+      id: 3,
+      itemBought: true,
+      itemName: 'Bife',
+      itemQuantity: 2,
+      itemMeasure: MeasureEnum.kg,
+      category: CategoryEnum.carne,
+    },
+  ]
+
   return (
     <div
       className='font-inter flex flex-col items-center pt-[88px] gap-6
@@ -12,30 +47,24 @@ function App() {
         Lista de Compras
       </h1>
 
-      <Form />
+      <Form
+        setItem={setItem}
+        setQuantity={setQuantity}
+        setMeasure={setMeasure}
+        setCategory={setCategory}
+      />
 
       <div className='flex flex-col gap-3'>
-        <Item
-          itemBought={false}
-          itemName='Banana'
-          itemQuantity={2}
-          itemQuantityUnity='unidades'
-          category={CategoryEnum.fruta}
-        />
-        <Item
-          itemBought={false}
-          itemName='Coquinha'
-          itemQuantity={2}
-          itemQuantityUnity='litros'
-          category={CategoryEnum.bebida}
-        />
-        <Item
-          itemBought={true}
-          itemName='Linguicinha'
-          itemQuantity={1}
-          itemQuantityUnity='unidades'
-          category={CategoryEnum.carne}
-        />
+        {itemListMock.map((item: IItem) => (
+          <Item
+            key={item.id}
+            itemBought={item.itemBought}
+            itemName={item.itemName}
+            itemQuantity={item.itemQuantity}
+            itemMeasure={item.itemMeasure}
+            category={item.category}
+          />
+        ))}
       </div>
     </div>
   )

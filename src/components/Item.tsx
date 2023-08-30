@@ -3,18 +3,10 @@ import menuIcon from "../assets/menuIcon.svg";
 import EditMenu from "./EditMenu";
 import Tag from "./Tag";
 import { useState } from "react";
-import CategoryEnum from "../enums/CategoryEnum";
 import Checkbox from "./Checkbox";
+import IItem from "../interfaces/IItem";
 
-interface IProps {
-  itemBought: boolean;
-  itemName: string;
-  itemQuantity: number;
-  itemQuantityUnity: string;
-  category: CategoryEnum;
-}
-
-function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}: IProps) {
+function Item({itemBought, itemName, itemQuantity, itemMeasure, category}: IItem) {
   const [editing, setEditing] = useState(false);
 
   function toggleEditing() {
@@ -42,7 +34,7 @@ function Item({itemBought, itemName, itemQuantity, itemQuantityUnity, category}:
           <p
             className="text-gray-200 text-xs"
           >
-            {`${itemQuantity} ${itemQuantityUnity}`}
+            {`${itemQuantity} ${itemMeasure}`}
           </p>
         </div>
       </div>
