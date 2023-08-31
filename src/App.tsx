@@ -9,9 +9,8 @@ function App() {
   const [item, setItem] = useState('')
   const [quantity, setQuantity] = useState('')
   const [measure, setMeasure] = useState<MeasureEnum>(MeasureEnum.unidade)
-  const [category, setCategory] = useState<CategoryEnum | undefined>(undefined)
-
-  const itemListMock: IItem[] = [
+  const [category, setCategory] = useState<CategoryEnum>(CategoryEnum.NONE)
+  const [itemList, setItemList] = useState<IItem[]>([
     {
       id: 1,
       itemBought: false,
@@ -36,7 +35,26 @@ function App() {
       itemMeasure: MeasureEnum.kg,
       category: CategoryEnum.carne,
     },
-  ]
+  ])
+
+  function generateNewID(): number {
+    if (!itemList.length) return 1
+    const highestIDObj = itemList.reduce((prev, curr) => (
+      prev.id > curr.id ? prev : curr
+    ))
+    return highestIDObj.id + 1;
+  }
+
+  function generateItemToList(): IItem {
+    return {
+      id: generateNewID(),
+      itemBought: false,
+      itemName: item,
+      itemQuantity: Number(quantity),
+      itemMeasure: measure,
+      category: category,
+    }
+  }
 
   return (
     <div
@@ -55,8 +73,9 @@ function App() {
       />
 
       <div className='flex flex-col gap-3'>
-        {itemListMock.map((item: IItem) => (
+        {itemList.map((item: IItem) => (
           <Item
+            id={item.id}
             key={item.id}
             itemBought={item.itemBought}
             itemName={item.itemName}

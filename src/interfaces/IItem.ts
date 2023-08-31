@@ -1,7 +1,7 @@
 import CategoryEnum from "../enums/CategoryEnum";
 
 interface IItem {
-  id?: number;
+  id: number;
   itemBought: boolean;
   itemName: string;
   itemQuantity: number;

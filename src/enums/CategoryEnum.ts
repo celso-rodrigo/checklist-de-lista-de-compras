@@ -1,4 +1,5 @@
 enum CategoryEnum {
+  NONE = 0,
   'padaria' = 'padaria',
   'legume' = 'legume',
   'fruta' = 'fruta',

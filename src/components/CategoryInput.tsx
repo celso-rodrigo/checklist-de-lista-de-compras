@@ -10,7 +10,7 @@ import CategoryEnum from '../enums/CategoryEnum'
 import {Dispatch, SetStateAction} from 'react'
 
 interface IProps {
-  setCategory: Dispatch<SetStateAction<CategoryEnum | undefined>>
+  setCategory: Dispatch<SetStateAction<CategoryEnum>>
 }
 
 function CategoryInput({setCategory}: IProps) {

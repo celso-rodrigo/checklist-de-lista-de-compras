@@ -9,7 +9,7 @@ interface IProps {
   setItem: Dispatch<SetStateAction<string>>
   setQuantity: Dispatch<SetStateAction<string>>
   setMeasure: Dispatch<SetStateAction<MeasureEnum>>
-  setCategory: Dispatch<SetStateAction<CategoryEnum | undefined>>
+  setCategory: Dispatch<SetStateAction<CategoryEnum>>
 }
 
 function Form({setItem, setQuantity, setMeasure, setCategory}: IProps) {
