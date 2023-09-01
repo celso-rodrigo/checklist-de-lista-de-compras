@@ -6,14 +6,13 @@
 
 // import { ReactSVG } from 'react-svg'
 
+import Context from '../context/Context'
 import CategoryEnum from '../enums/CategoryEnum'
-import {Dispatch, SetStateAction} from 'react'
+import { useContext } from 'react'
 
-interface IProps {
-  setCategory: Dispatch<SetStateAction<CategoryEnum>>
-}
+function CategoryInput() {
+  const {handleCategorySelect} = useContext(Context)
 
-function CategoryInput({setCategory}: IProps) {
   return (
     <div className='mt-2 rounded-md shadow-sm inset-y-0 right-0 flex items-center'>
       <label
@@ -26,7 +25,7 @@ function CategoryInput({setCategory}: IProps) {
         id='category'
         name='category'
         className='h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm'
-        onChange={({target}) => setCategory(target.value as CategoryEnum)}
+        onChange={handleCategorySelect}
       >
         <option>Selecione a Categoria</option>
 

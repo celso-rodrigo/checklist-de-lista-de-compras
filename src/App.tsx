@@ -1,60 +1,11 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import Form from './components/Form'
 import Item from './components/Item'
-import CategoryEnum from './enums/CategoryEnum'
-import MeasureEnum from './enums/MeasureEnum'
 import IItem from './interfaces/IItem'
+import Context from './context/Context'
 
 function App() {
-  const [item, setItem] = useState('')
-  const [quantity, setQuantity] = useState('')
-  const [measure, setMeasure] = useState<MeasureEnum>(MeasureEnum.unidade)
-  const [category, setCategory] = useState<CategoryEnum>(CategoryEnum.NONE)
-  const [itemList, setItemList] = useState<IItem[]>([
-    {
-      id: 1,
-      itemBought: false,
-      itemName: 'banana',
-      itemQuantity: 8,
-      itemMeasure: MeasureEnum.unidade,
-      category: CategoryEnum.fruta,
-    },
-    {
-      id: 2,
-      itemBought: false,
-      itemName: 'Coca',
-      itemQuantity: 2,
-      itemMeasure: MeasureEnum.litros,
-      category: CategoryEnum.bebida,
-    },
-    {
-      id: 3,
-      itemBought: true,
-      itemName: 'Bife',
-      itemQuantity: 2,
-      itemMeasure: MeasureEnum.kg,
-      category: CategoryEnum.carne,
-    },
-  ])
-
-  function generateNewID(): number {
-    if (!itemList.length) return 1
-    const highestIDObj = itemList.reduce((prev, curr) => (
-      prev.id > curr.id ? prev : curr
-    ))
-    return highestIDObj.id + 1;
-  }
-
-  function generateItemToList(): IItem {
-    return {
-      id: generateNewID(),
-      itemBought: false,
-      itemName: item,
-      itemQuantity: Number(quantity),
-      itemMeasure: measure,
-      category: category,
-    }
-  }
+  const {itemList} = useContext(Context)
 
   return (
     <div
@@ -65,12 +16,7 @@ function App() {
         Lista de Compras
       </h1>
 
-      <Form
-        setItem={setItem}
-        setQuantity={setQuantity}
-        setMeasure={setMeasure}
-        setCategory={setCategory}
-      />
+      <Form />
 
       <div className='flex flex-col gap-3'>
         {itemList.map((item: IItem) => (

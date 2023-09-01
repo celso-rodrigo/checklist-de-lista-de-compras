@@ -1,12 +1,10 @@
+import { useContext } from 'react'
 import MeasureEnum from '../enums/MeasureEnum'
-import {Dispatch, SetStateAction} from 'react'
+import Context from '../context/Context'
 
-interface IProps {
-  setQuantity: Dispatch<SetStateAction<string>>
-  setMeasure: Dispatch<SetStateAction<MeasureEnum>>
-}
+function QuantityInput() {
+  const {handleQuantityInput, handleMeasureSelect} = useContext(Context)
 
-function QuantityInput({setQuantity, setMeasure}: IProps) {
   return (
     <div>
       <label
@@ -22,7 +20,7 @@ function QuantityInput({setQuantity, setMeasure}: IProps) {
           id='quantidade'
           className='block w-full rounded-md border-0 py-1.5 pl-2 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
           placeholder='0'
-          onChange={({target}) => setQuantity(target.value)}
+          onChange={handleQuantityInput}
         />
         <div className='absolute inset-y-0 right-0 flex items-center'>
           <label htmlFor='measure' className='sr-only'>
@@ -32,7 +30,7 @@ function QuantityInput({setQuantity, setMeasure}: IProps) {
             id='measure'
             name='measure'
             className='block h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm'
-            onChange={({target}) => setMeasure(target.value as MeasureEnum)}
+            onChange={handleMeasureSelect}
           >
             <option value={MeasureEnum.unidade}>Un.</option>
             <option value={MeasureEnum.litros}>L</option>
