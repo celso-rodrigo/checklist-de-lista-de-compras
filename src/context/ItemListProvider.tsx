@@ -9,9 +9,9 @@ function ItemListProvider({ children }: { children: ReactNode }) {
   const [quantity, setQuantity] = useState('')
   const [measure, setMeasure] = useState<MeasureEnum>(MeasureEnum.unidade)
   const [category, setCategory] = useState<CategoryEnum>(CategoryEnum.NONE)
-  // MOCK
-  const [itemList, setItemList] = useState<IItem[]>([
-    {
+  const [itemList, setItemList] = useState<IItem[]>(
+    // MOCK
+    [{
       id: 1,
       itemBought: false,
       itemName: 'banana',
@@ -38,6 +38,7 @@ function ItemListProvider({ children }: { children: ReactNode }) {
   ])
 
 
+  // INPUT HANDLERS START
   const handleItemInput = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
     const itemInputValue = event.target.value;
     setItem(itemInputValue);
@@ -57,6 +58,7 @@ function ItemListProvider({ children }: { children: ReactNode }) {
     const categorySelectValue: CategoryEnum = event.target.value as CategoryEnum;
     setCategory(categorySelectValue);
   }, []);
+  // INPUT HANDLERS END
 
   function generateItemToList(): IItem {
     return {
@@ -69,6 +71,7 @@ function ItemListProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  // Aways return a number equal to the highest id + 1
   function generateNewID(): number {
     if (!itemList.length) return 1
     const highestIDObj = itemList.reduce((prev, curr) => (
